@@ -15,6 +15,14 @@ function NovoLivro (){
                     placeholder='Digite o titulo do livro'
                     text='Digite o titulo do livro'
                 />
+
+                <Input 
+                    type='text'
+                    name='autor'
+                    id='autor'
+                    placeholder='Digite o nome do autor do livro'
+                    text='Digite o nome do autor do livro'
+                />
             </form>
         </section>
     );
