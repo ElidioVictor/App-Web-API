@@ -11,10 +11,10 @@ function Input({type, text, name, placeholder, handlerOnChange, value}){
                 name={name}
                 id={name}
                 placeholder={placeholder}
-                OnChange={handlerOnChange}
+                onChange={handlerOnChange}
                 value={value}
             />
-
+            
         </div>
     );
 };

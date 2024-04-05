@@ -1,0 +1,31 @@
+{
+    "books":[],
+    "categories":[
+
+        {
+            "id": 1,
+            "name": "FICÇÃO CIENTIFICA"
+        },
+
+        {
+            "id": 2,
+            "name": "TUDO SOBRE TOPLANE"
+        },
+
+        {
+            "id": 3,
+            "name": "TUDO SOBRE A JUNGLE"
+        },
+
+        {
+            "id": 4,
+            "name": "TUDO SOBRE A MIDLANE"
+        },
+
+        {
+            "id": 5,
+            "name": "TUDO SOBRE A BOTLANE"
+        }
+        
+    ]
+}
