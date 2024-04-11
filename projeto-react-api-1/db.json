@@ -1,31 +1,58 @@
 {
-    "books":[],
-    "categories":[
-
-        {
-            "id": 1,
-            "name": "FICÇÃO CIENTIFICA"
-        },
-
-        {
-            "id": 2,
-            "name": "TUDO SOBRE TOPLANE"
-        },
-
-        {
-            "id": 3,
-            "name": "TUDO SOBRE A JUNGLE"
-        },
-
-        {
-            "id": 4,
-            "name": "TUDO SOBRE A MIDLANE"
-        },
-
-        {
-            "id": 5,
-            "name": "TUDO SOBRE A BOTLANE"
-        }
-        
-    ]
+  "books": [
+    {
+      "id": "5162",
+      "nome_livro": "teemo top",
+      "autor": "patryck maia",
+      "descricao": "um erro"
+    },
+    {
+      "id": "f1eb",
+      "nome_livro": "teemo top",
+      "autor": "patryck maia",
+      "descricao": "um erro",
+      "categories": {
+        "id": "2",
+        "categories": "TUDO SOBRE TOPLANE"
+      }
+    },
+    {
+      "id": "e636",
+      "nome_livro": "Poque Ilaoi é uma doença",
+      "autor": "Robson mono Kassadin",
+      "descricao": "Provando que este campeão é estupidamente forte",
+      "categories": {
+        "id": "2",
+        "categories": "TUDO SOBRE TOPLANE"
+      }
+    },
+    {
+      "id": "8872",
+      "nome_livro": "os melhores campeõies do league",
+      "autor": "maylon",
+      "descricao": "tier list"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "META DO LOLZINHO"
+    },
+    {
+      "id": "2",
+      "name": "TUDO SOBRE TOPLANE"
+    },
+    {
+      "id": "3",
+      "name": "TUDO SOBRE A JUNGLE"
+    },
+    {
+      "id": "4",
+      "name": "TUDO SOBRE A MIDLANE"
+    },
+    {
+      "id": "5",
+      "name": "TUDO SOBRE A BOTLANE"
+    }
+  ]
 }

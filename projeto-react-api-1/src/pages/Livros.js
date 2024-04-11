@@ -4,7 +4,7 @@ function Livros (){
 
     return(
         <section className={styles.livro_container}>
-            <h1>VEJA SEUS <span>LIVROS</span> AQUI MANO</h1>
+            <h1>VEJA SEUS <span>LIVROS</span> AQUI MEU MANO</h1>
         </section>
     );
 

@@ -2,11 +2,22 @@ import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import styles from './NovoLivro.module.css';
 import { useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'  
 
 
 function NovoLivro (){
 
+    // state de categories que chama as categorias
     const  [categories, setCategories] = useState([]);
+
+    // state que vai cadastrar os livros
+    const [book, setBook] = useState({});
+
+    //objeto de navegação
+    const navigate = useNavigate();
+
+
+
 
     useEffect(()=>{
         fetch(
@@ -32,13 +43,57 @@ function NovoLivro (){
                 console.log(error);
             }
         )
-    }, [])
+    }, []);
+
+    function handlerChangeBook(e){
+
+        setBook({... book, [e.target.name] : e.target.value})
+        //console.log(book) 
+    };
+
+    function handlerChangeCategory(e){
+
+        setBook({... book, categories:{
+            id : e.target.value,
+            categories : e.target.options[e.target.selectedIndex].text
+        }})
+    };
+
+    //console.log(book)
+    
+    function createBook(book){
+        fetch('http://localhost:5000/books',{
+            method:'POST',
+            headers:{
+                'Content-Type' : 'application/json'
+            },
+
+            body: JSON.stringify(book)
+        })
+        .then(
+            (resp)=>resp.json())
+
+        .then(
+            (data) =>{console.log(data)
+            navigate('/livro')
+            })
+        .catch(
+            (error) =>{console.log(error)
+            
+            })
+    }
+    
+    function submit(e){
+        e.preventDefault()
+        createBook(book)
+    }
 
     return(
         <section className={styles.novo_livro_container}>
             <h1><span>Cadastro</span> de livros</h1>
-            <form>
+            <form onSubmit={submit}>
                 <Input 
+                    handlerOnChange={handlerChangeBook}
                     type='text'
                     name='nome_livro'
                     id='nome_livro'
@@ -47,6 +102,7 @@ function NovoLivro (){
                 />
 
                 <Input 
+                    handlerOnChange={handlerChangeBook}
                     type='text'
                     name='autor'
                     id='autor'
@@ -55,6 +111,7 @@ function NovoLivro (){
                 />
 
                 <Input 
+                    handlerOnChange={handlerChangeBook}
                     type='text'
                     name='descricao'
                     id='descricao'
@@ -63,11 +120,15 @@ function NovoLivro (){
                 />
 
                 <Select
+                    handlerOnChange={handlerChangeCategory}
                     name="categoria_id"
                     text="selecione a categoria do livro"
                     options={categories}
                 />
 
+                <p>
+                    <input type='submit' value='cadastrar livro'/>                
+                </p>
                 
             </form>
         </section>
