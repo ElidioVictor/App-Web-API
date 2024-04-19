@@ -31,6 +31,46 @@
       "nome_livro": "os melhores campeõies do league",
       "autor": "maylon",
       "descricao": "tier list"
+    },
+    {
+      "id": "1720",
+      "nome_livro": "faker the legend",
+      "autor": "League of Legends",
+      "descricao": "The history of the greatest LOL player",
+      "categories": {
+        "id": "4",
+        "categories": "TUDO SOBRE A MIDLANE"
+      }
+    },
+    {
+      "id": "9400",
+      "nome_livro": "comi",
+      "autor": "feijoada",
+      "descricao": "ontem",
+      "categories": {
+        "id": "2",
+        "categories": "TUDO SOBRE TOPLANE"
+      }
+    },
+    {
+      "id": "9fa2",
+      "categories": {
+        "id": "6",
+        "categories": "LORE e MAIS"
+      },
+      "nome_livro": "Aatrox e o memorando",
+      "autor": "LOL barsil",
+      "descricao": "O memorando do AA"
+    },
+    {
+      "id": "574f",
+      "nome_livro": "test",
+      "autor": "test",
+      "descricao": "test",
+      "categories": {
+        "id": "6",
+        "categories": "LORE e MAIS"
+      }
     }
   ],
   "categories": [
@@ -53,6 +93,14 @@
     {
       "id": "5",
       "name": "TUDO SOBRE A BOTLANE"
+    },
+    {
+      "id": "6",
+      "name": "LORE e MAIS"
+    },
+    {
+      "id": "7",
+      "name": "trollface"
     }
   ]
 }

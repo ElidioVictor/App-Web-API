@@ -17,8 +17,6 @@ function NovoLivro (){
     const navigate = useNavigate();
 
 
-
-
     useEffect(()=>{
         fetch(
             'http://localhost:5000/categories',
@@ -75,7 +73,7 @@ function NovoLivro (){
 
         .then(
             (data) =>{console.log(data)
-            navigate('/livro')
+            navigate('/livro', {state:'Livro cadastrado com sucesso ^_^'})
             })
         .catch(
             (error) =>{console.log(error)
