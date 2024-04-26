@@ -4,7 +4,11 @@
       "id": "5162",
       "nome_livro": "teemo top",
       "autor": "patryck maia",
-      "descricao": "um erro"
+      "descricao": "um erro",
+      "categories": {
+        "id": "2",
+        "categories": "TUDO SOBRE TOPLANE"
+      }
     },
     {
       "id": "f1eb",
@@ -30,7 +34,11 @@
       "id": "8872",
       "nome_livro": "os melhores campeõies do league",
       "autor": "maylon",
-      "descricao": "tier list"
+      "descricao": "tier list",
+      "categories": {
+        "id": "2",
+        "categories": "TUDO SOBRE TOPLANE"
+      }
     },
     {
       "id": "1720",
@@ -53,20 +61,30 @@
       }
     },
     {
-      "id": "9fa2",
-      "categories": {
-        "id": "6",
-        "categories": "LORE e MAIS"
-      },
-      "nome_livro": "Aatrox e o memorando",
-      "autor": "LOL barsil",
-      "descricao": "O memorando do AA"
-    },
-    {
       "id": "574f",
       "nome_livro": "test",
       "autor": "test",
       "descricao": "test",
+      "categories": {
+        "id": "6",
+        "categories": "LORE e MAIS"
+      }
+    },
+    {
+      "id": "4117",
+      "nome_livro": "DIOGENES O FILHO DA PUTA",
+      "autor": "MEU IRMÃO ",
+      "descricao": "AS AVENTURAS DE DIOGENES O SINICO",
+      "categories": {
+        "id": "7",
+        "categories": "trollface"
+      }
+    },
+    {
+      "id": "72f1",
+      "nome_livro": "O estranho misterioso",
+      "autor": "Mark Twain",
+      "descricao": "Um misterioso ser aparece em um viralejo e muda a vida das pessoas para sempre",
       "categories": {
         "id": "6",
         "categories": "LORE e MAIS"
