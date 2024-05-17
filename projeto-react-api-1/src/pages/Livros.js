@@ -9,6 +9,9 @@ import CardBook from '../components/cardbook/CardBook';
 function Livros (){
 
     const [books, setBooks] = useState([]);
+    const [bookMessage, setBookMessage] = useState('')
+
+
     useEffect(()=>{
         fetch('http://localhost:5000/books',{
             method: 'GET',
@@ -20,6 +23,22 @@ function Livros (){
         .then((data)=>{setBooks(data); console.log(data)})
         .catch((error)=>{console.log(error)})
     }, []);
+
+    function removeBooks(id){
+        fetch(`http://localhost:5000/books/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type' : 'application/json'
+            },
+        })
+        .then((resp)=>resp.json())
+        .then((data)=>{ 
+            setBooks(books.filter((book_data) => book_data.id != id))
+            setBookMessage('Livro Excluido com SUCESSO')
+            }
+        )
+        .catch((error)=>{console.log(error)})
+    }
 
     const location = useLocation();
     let message =''
@@ -38,6 +57,14 @@ function Livros (){
                                 type='sucess'
                             />
             }
+
+            {
+                bookMessage && <Message
+                                msg={bookMessage}
+                                type='sucess'
+                            />
+            }
+
             {/* <Container> */}
 
             {
@@ -47,6 +74,8 @@ function Livros (){
                     livro={book.nome_livro}
                     autor={book.autor}
                     category={book.categories.categories}
+                    key={book.id}
+                    handlerRemove={removeBooks}
                 />
 
                 ))

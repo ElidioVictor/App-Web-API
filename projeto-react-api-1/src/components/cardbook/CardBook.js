@@ -1,6 +1,11 @@
 import styles from './CardBook.module.css'
 
-function CardBook ({id, livro, autor, category}){
+function CardBook ({id, livro, autor, category, handlerRemove}){
+
+    const remove  = (e) =>{
+        e.preventDefault();
+        handlerRemove(id);
+    }
 
     return(
 
@@ -11,6 +16,11 @@ function CardBook ({id, livro, autor, category}){
             <p className={styles.category_text}>
                 <span/>Categoria: {category}
             </p>
+
+            <div className={styles.book_card_actions}>
+                <button onClick={remove}>Excluir</button>
+            </div>
+
         </div>
 
     )
