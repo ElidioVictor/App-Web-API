@@ -1,5 +1,5 @@
 import styles from './EditarLivro.module.css'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
@@ -8,7 +8,8 @@ import Select from '../components/form/Select';
 function EditarLivro(params){
 
     const {id} = useParams();
-    console.log(id);
+    console.log(id); 
+    const navigate = useNavigate();
 
     const [book, setBook] = useState({})
     const  [categories, setCategories] = useState([]);
@@ -65,12 +66,40 @@ function EditarLivro(params){
         }})
     };
 
+    //erditar
+    function editBook(book){
+        fetch(`http://localhost:5000/books/${book.id}`,{
+            method:'PATCH',
+            headers:{
+                'Content-Type' : 'application/json'
+            },
+
+            body: JSON.stringify(book)
+        })
+        .then(
+            (resp)=>resp.json())
+
+        .then(
+            (data) =>{console.log(data)
+            navigate('/livro', {state:'EDITOU MANO'})
+            })
+        .catch(
+            (error) =>{console.log(error)
+            
+            })
+    }
+
+    function submit(e){
+        e.preventDefault();
+        editBook(book);
+    }
+
     return(
 
         <div className={styles.book_container}>
             <h1>Edição ed livro</h1>
 
-            <form>
+            <form onSubmit={submit}> 
 
                 <Input 
                     handlerOnChange={handlerChangeBook}
@@ -85,7 +114,7 @@ function EditarLivro(params){
                 <Input 
                     handlerOnChange={handlerChangeBook}
                     type='text'
-                    name=''
+                    name='autor'
                     id='autor'
                     placeholder='Digite o novo nome do autor do livro'
                     text='Digite o novo nome do autor do livro'
@@ -98,7 +127,7 @@ function EditarLivro(params){
                     name='descricao'
                     id='descricao'
                     placeholder='Faça um breve resumo do livro'
-                    text='Escreva a descrição do livro's
+                    text='Escreva a descrição do livro'
                     value={book.descricao}
                 />
 
@@ -106,9 +135,10 @@ function EditarLivro(params){
                     handlerOnChange={handlerChangeCategory}
                     name="categoria_id"
                     text="selecione a categoria do livro"
-                    options={categories}s
+                    options={categories}
                 />
 
+                <p><input value='editar_livro' type='submit'/></p>
 
             </form>
 

@@ -12,7 +12,7 @@ function CardBook ({id, livro, autor, category, handlerRemove}){
 
         <div className={styles.book_card}>
             <h4>{livro}</h4>
-            <p> Autor: </p> {autor}
+            <p> Autor: {autor}</p> 
             
             <p className={styles.category_text}>
                 <span/>Categoria: {category}
