@@ -10,14 +10,17 @@ function Livros (){
 
     const [books, setBooks] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/books',{
+        fetch('http://localhost:5000/listagemLivros',{
             method: 'GET',
+            mode: 'cors',
             headers: {
-                'Content-type' : 'application/json'
+                'Content-type' : 'application/json',
+                'Acess-Control-Allow-Origin' : '*',
+                'Acess-Control-Allow-Headers' : '*'
             },
         })
         .then((resp)=>resp.json())
-        .then((data)=>{setBooks(data); console.log(data)})
+        .then((data)=>{setBooks(data.data); console.log(data)})
         .catch((error)=>{console.log(error)})
     }, []);
 
@@ -43,10 +46,11 @@ function Livros (){
             {
                 books.map((book)=>(
                 <CardBook
-                    id={book.id}
+                    id={book.cod_livro}
                     livro={book.nome_livro}
-                    autor={book.autor}
-                    category={book.categories.categories}
+                    autor={book.autor_livro}
+                    //category={book.categories.categories}
+                    key={book.cod_livro}
                 />
 
                 ))
