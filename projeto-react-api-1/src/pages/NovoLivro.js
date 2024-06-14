@@ -17,31 +17,31 @@ function NovoLivro (){
     const navigate = useNavigate();
 
 
-    useEffect(()=>{
-        fetch(
-            'http://localhost:5000/categories',
-            {
-                method:'GET',
-                headers:{
-                    'Content-Type' : 'application/json'
-                }
-            }
-        ).then(
-            (res)=>
-                res.json()
+    // useEffect(()=>{
+    //     fetch(
+    //         'http://localhost:5000/categories',
+    //         {
+    //             method:'GET',
+    //             headers:{
+    //                 'Content-Type' : 'application/json'
+    //             }
+    //         }
+    //     ).then(
+    //         (res)=>
+    //             res.json()
             
-        ).then(
-            (data) =>{
-                setCategories(data);
-                console.log(data);
-            }
-        )
-        .catch(
-            (error) =>{
-                console.log(error);
-            }
-        )
-    }, []);
+    //     ).then(
+    //         (data) =>{
+    //             setCategories(data);
+    //             console.log(data);
+    //         }
+    //     )
+    //     .catch(
+    //         (error) =>{
+    //             console.log(error);
+    //         }
+    //     )
+    // }, []);
 
     function handlerChangeBook(e){
 
@@ -60,10 +60,13 @@ function NovoLivro (){
     //console.log(book)
     
     function createBook(book){
-        fetch('http://localhost:5000/books',{
+        fetch('http://localhost:5000/inserirLivro',{
             method:'POST',
+            mode: 'cors',
             headers:{
-                'Content-Type' : 'application/json'
+                'Content-Type' : 'application/json',
+                'Acess-Control-Allow-Origin' : '*',
+                'Acess-Control-Allow-Headers' : '*'
             },
 
             body: JSON.stringify(book)
@@ -73,7 +76,7 @@ function NovoLivro (){
 
         .then(
             (data) =>{console.log(data)
-            navigate('/livro', {state:'Livro cadastrado com sucesso ^_^'})
+            navigate('/livro', {state:'Livro cadastrado com sucesso'})
             })
         .catch(
             (error) =>{console.log(error)
@@ -102,8 +105,8 @@ function NovoLivro (){
                 <Input 
                     handlerOnChange={handlerChangeBook}
                     type='text'
-                    name='autor'
-                    id='autor'
+                    name='autor_livro'
+                    id='autor_livro'
                     placeholder='Digite o nome do autor do livro'
                     text='Digite o nome do autor do livro'
                 />
@@ -111,8 +114,8 @@ function NovoLivro (){
                 <Input 
                     handlerOnChange={handlerChangeBook}
                     type='text'
-                    name='descricao'
-                    id='descricao'
+                    name='descricao_livro'
+                    id='descricao_livro'
                     placeholder='Faça um breve resumo do livro'
                     text='Escreva a descrição do livro'
                 />

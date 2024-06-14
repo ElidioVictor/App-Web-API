@@ -15,42 +15,45 @@ function EditarLivro(params){
     const  [categories, setCategories] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/books/${id}`,{
+        fetch(`http://localhost:5000/listagemLivro/${id}`,{
             method: 'GET',
+            mode: 'cors',
             headers: {
-                'Content-type' : 'application/json'
+                'Content-type' : 'application/json',
+                'Acess-Control-Allow-Origin' : '*',
+                'Acess-Control-Allow-Headers' : '*'
             },
         })
         .then((resp)=>resp.json())
-        .then((data)=>{setBook(data); console.log(data)})
+        .then((data)=>{setBook(data.data); console.log(data.data)})
         .catch((error)=>{console.log(error)})
     }, []);
 
-    useEffect(()=>{
-        fetch(
-            'http://localhost:5000/categories',
-            {
-                method:'GET',
-                headers:{
-                    'Content-Type' : 'application/json'
-                }
-            }
-        ).then(
-            (res)=>
-                res.json()
+    // useEffect(()=>{
+    //     fetch(
+    //         'http://localhost:5000/categories',
+    //         {
+    //             method:'GET',
+    //             headers:{
+    //                 'Content-Type' : 'application/json'
+    //             }
+    //         }
+    //     ).then(
+    //         (res)=>
+    //             res.json()
             
-        ).then(
-            (data) =>{
-                setCategories(data);
-                console.log(data);
-            }
-        )
-        .catch(
-            (error) =>{
-                console.log(error);
-            }
-        )
-    }, []);
+    //     ).then(
+    //         (data) =>{
+    //             setCategories(data);
+    //             console.log(data);
+    //         }
+    //     )
+    //     .catch(
+    //         (error) =>{
+    //             console.log(error);
+    //         }
+    //     )
+    // }, []);
 
     function handlerChangeBook(e){
 
@@ -68,10 +71,13 @@ function EditarLivro(params){
 
     //erditar
     function editBook(book){
-        fetch(`http://localhost:5000/books/${book.id}`,{
-            method:'PATCH',
+        fetch(`http://localhost:5000/alterarLivro`,{
+            method:'PUT',
+            mode: 'cors',
             headers:{
-                'Content-Type' : 'application/json'
+                'Content-Type' : 'application/json',
+                'Acess-Control-Allow-Origin' : '*',
+                'Acess-Control-Allow-Headers' : '*'
             },
 
             body: JSON.stringify(book)
@@ -81,7 +87,7 @@ function EditarLivro(params){
 
         .then(
             (data) =>{console.log(data)
-            navigate('/livro', {state:'EDITOU MANO'})
+            navigate('/livro', {state:'EDITOU MAN'})
             })
         .catch(
             (error) =>{console.log(error)
@@ -114,21 +120,21 @@ function EditarLivro(params){
                 <Input 
                     handlerOnChange={handlerChangeBook}
                     type='text'
-                    name='autor'
-                    id='autor'
+                    name='autor_livro'
+                    id='autor_livro'
                     placeholder='Digite o novo nome do autor do livro'
                     text='Digite o novo nome do autor do livro'
-                    value={book.autor}
+                    value={book.autor_livro}
                 />
 
                 <Input 
                     handlerOnChange={handlerChangeBook}
                     type='text'
-                    name='descricao'
-                    id='descricao'
+                    name='descricao_livro'
+                    id='descricao_livro'
                     placeholder='Faça um breve resumo do livro'
                     text='Escreva a descrição do livro'
-                    value={book.descricao}
+                    value={book.descricao_livro}
                 />
 
                 <Select

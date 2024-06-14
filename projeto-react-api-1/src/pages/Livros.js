@@ -8,6 +8,8 @@ import CardBook from '../components/cardbook/CardBook';
 
 function Livros (){
 
+    const [bookMessage, setBookMessage] = useState([])
+
     const [books, setBooks] = useState([]);
     useEffect(()=>{
         fetch('http://localhost:5000/listagemLivros',{
@@ -23,6 +25,21 @@ function Livros (){
         .then((data)=>{setBooks(data.data); console.log(data)})
         .catch((error)=>{console.log(error)})
     }, []);
+
+    const remove = (id) =>{
+        fetch(`http://localhost:5000/excluirLivro/${id}`,{
+            method : 'DELETE',
+            headers: {
+                'content-type':'application/json'
+        }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setBooks(books.filter((book_data)=> book_data.id_livro !== id ))
+            setBookMessage('PARABÉNS OBJETO)')
+        })
+        .catch((err) => {console.log(err)})
+    };
 
     const location = useLocation();
     let message =''
@@ -41,7 +58,13 @@ function Livros (){
                                 type='sucess'
                             />
             }
-            {/* <Container> */}
+            
+            {
+                bookMessage && <Message
+                                msg={bookMessage}
+                                type='sucess'
+                            />
+            }
 
             {
                 books.map((book)=>(
@@ -51,6 +74,7 @@ function Livros (){
                     autor={book.autor_livro}
                     //category={book.categories.categories}
                     key={book.cod_livro}
+                    handlerRemove={remove}
                 />
 
                 ))
